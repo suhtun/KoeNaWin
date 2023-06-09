@@ -16,3 +16,5 @@ rootProject.name = "KoeNaWin"
 include ':app'
 include ':core-data'
 include ':core-model'
+include ':core-network'
+include ':core-commom'

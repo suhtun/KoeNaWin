@@ -21,6 +21,8 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -30,16 +32,26 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.su.core_commom.Result
 import com.su.core_model.KoeNaWinUiData
 import com.su.koenawin.R
+import java.lang.Error
 
 @Composable
 fun HomeScreen(onNavigateToMediate: (koeNaWinUiDataId: String) -> Unit, viewModel: HomeViewModel= hiltViewModel()) {
+    val uiState: HomeScreenUiState by viewModel.userFlow.collectAsState()
     Surface(modifier = Modifier.fillMaxSize()) {
         Column(){
             AppTopBar(onBackPress = {})
             Spacer(Modifier.heightIn(min = 20.dp))
-            GridView(koeNaWinList = viewModel.koeNaWinList.value, onClick ={onNavigateToMediate(it)} )
+            val koeNaWinUiState = uiState.koeNaWinUiState
+            when(koeNaWinUiState){
+                KoeNaWinUiState.Loading -> {}
+                KoeNaWinUiState.Error -> {}
+                is KoeNaWinUiState.Success ->{
+                    GridView(koeNaWinList = koeNaWinUiState.koeNaWin, onClick ={onNavigateToMediate(it)} )
+                }
+            }
         }
     }
 }
@@ -62,7 +74,7 @@ fun AppTopBar(onBackPress: () -> Unit){
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun GridView(koeNaWinList:ArrayList<KoeNaWinUiData>, onClick: (koeNaWinUiDataId:String) -> Unit) {
+fun GridView(koeNaWinList:List<KoeNaWinUiData>, onClick: (koeNaWinUiDataId:String) -> Unit) {
     LazyVerticalGrid(
         columns = GridCells.Adaptive(minSize = 138.dp)
     ) {

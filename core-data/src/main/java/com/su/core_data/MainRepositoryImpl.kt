@@ -1,10 +1,17 @@
 package com.su.core_data
 
 import com.su.core_model.KoeNaWinUiData
+import com.su.core_network.model.convert
+import com.su.core_network.retrofit.RetrofitKNWNetworkApi
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
+import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class MainRepositoryImpl : MainRepository {
+class MainRepositoryImpl @Inject constructor(private val network: RetrofitKNWNetworkApi): MainRepository {
     override fun getKoeNaWinList(): ArrayList<KoeNaWinUiData> {
         var mockData = ArrayList<KoeNaWinUiData>()
         mockData.add(KoeNaWinUiData(id = "01","တနင်္လာ","သမ္မာသမ္ဗုဒ္ဓေါ","","(၂)ပတ်",2))
@@ -75,4 +82,8 @@ class MainRepositoryImpl : MainRepository {
         mockData.add(KoeNaWinUiData(id = "14","တနင်္ဂနွေ","","","()ပတ်",0))
         return mockData
     }
+
+    override fun getKoeNaWinStream(): Flow<List<KoeNaWinUiData>>
+    = flow { emit(network.getKoeNaWin().map { it.convert() }) }.flowOn(Dispatchers.IO)
+
 }
