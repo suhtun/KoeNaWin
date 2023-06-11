@@ -38,7 +38,7 @@ import com.su.koenawin.R
 import java.lang.Error
 
 @Composable
-fun HomeScreen(onNavigateToMediate: (koeNaWinUiDataId: String) -> Unit, viewModel: HomeViewModel= hiltViewModel()) {
+fun HomeScreen(onNavigateToMediate: (koeNaWinUiDataId: KoeNaWinUiData) -> Unit, viewModel: HomeViewModel= hiltViewModel()) {
     val uiState: HomeScreenUiState by viewModel.userFlow.collectAsState()
     Surface(modifier = Modifier.fillMaxSize()) {
         Column(){
@@ -49,7 +49,9 @@ fun HomeScreen(onNavigateToMediate: (koeNaWinUiDataId: String) -> Unit, viewMode
                 KoeNaWinUiState.Loading -> {}
                 KoeNaWinUiState.Error -> {}
                 is KoeNaWinUiState.Success ->{
-                    GridView(koeNaWinList = koeNaWinUiState.koeNaWin, onClick ={onNavigateToMediate(it)} )
+
+                    GridView(koeNaWinList = koeNaWinUiState.koeNaWin, onClick ={ viewModel.findKoeNaWin(koeNaWinUiState.koeNaWin,it)
+                        ?.let { it1 -> onNavigateToMediate(it1) } } )
                 }
             }
         }

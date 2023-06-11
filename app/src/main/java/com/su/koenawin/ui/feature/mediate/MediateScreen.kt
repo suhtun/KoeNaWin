@@ -20,17 +20,17 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.su.core_model.KoeNaWinUiData
 
 @Composable
-fun MediateScreen(id: String,viewModel: MediateViewModel = hiltViewModel()) {
+fun MediateScreen(gonTaw:String, gonTawTranslation:String, showCount:String, count:Int,viewModel: MediateViewModel = hiltViewModel()) {
     Surface(modifier = Modifier.fillMaxSize()) {
         Box(modifier = Modifier.fillMaxSize()){
-            val koeNaWinUiData= viewModel.findKoeNaWin(id)
-            koeNaWinUiData?.totalCount?.let { viewModel.calculateTotalCount(it) }
+            viewModel.calculateTotalCount(count)
             Column(modifier = Modifier.align(Alignment.TopCenter).padding(top = 60.dp)) {
-                Text(text = "${koeNaWinUiData?.goneDaw}${koeNaWinUiData?.countName}",fontSize=28.sp, fontWeight = FontWeight.Bold, color = Color.Yellow)
+                Text(text = "${gonTaw}${showCount}",fontSize=28.sp, fontWeight = FontWeight.Bold, color = Color.Yellow)
                 Text(modifier = Modifier
-                    .padding(top = 16.dp), text = "${koeNaWinUiData?.goneDawDesc}${koeNaWinUiData?.countName}",fontSize=16.sp, fontWeight = FontWeight.Bold, color = Color.Yellow)
+                    .padding(top = 16.dp), text = "${gonTawTranslation}",fontSize=16.sp, fontWeight = FontWeight.Bold, color = Color.Yellow)
             }
             OutlinedButton(onClick = { viewModel.decreaseCount() },
                 modifier= Modifier
@@ -44,5 +44,9 @@ fun MediateScreen(id: String,viewModel: MediateViewModel = hiltViewModel()) {
                 Text(text = viewModel.showCurrentValue(),fontSize=28.sp, fontWeight = FontWeight.Bold)
             }
         }
+    }
+
+    fun findKoeNaWin(list: List<KoeNaWinUiData>,id:String): KoeNaWinUiData?{
+        return list.find { it.id== id}
     }
 }

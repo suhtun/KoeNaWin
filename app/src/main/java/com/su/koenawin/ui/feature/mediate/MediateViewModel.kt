@@ -24,8 +24,4 @@ class MediateViewModel @Inject constructor(private val repo: MainRepository): Vi
         val totalCount = _totalCount.value
         return if (totalCount <= 0) "DONE" else "$totalCount"
     }
-
-    fun findKoeNaWin(id:String): KoeNaWinUiData?{
-        return repo.getKoeNaWinList().find { it.id== id}
-    }
 }

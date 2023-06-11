@@ -48,6 +48,9 @@ class HomeViewModel @Inject constructor(private val repo: MainRepository) : View
         }
 
     }
+    fun findKoeNaWin(list: List<KoeNaWinUiData>?,id:String): KoeNaWinUiData?{
+        return list?.find { it.id== id}
+    }
 }
 
 sealed interface KoeNaWinUiState {
