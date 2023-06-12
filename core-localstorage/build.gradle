@@ -35,22 +35,17 @@ android {
 dependencies {
     //module
     implementation project(':core-model')
+    //room
+    implementation("androidx.room:room-runtime:$room_version")
+    annotationProcessor("androidx.room:room-compiler:$room_version")
+    // To use Kotlin annotation processing tool (kapt)
+    kapt("androidx.room:room-compiler:$room_version")
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation("androidx.room:room-ktx:$room_version")
 
-    // di_hilt
+    //di
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
-    //coroutine
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version"
-
-    //room
-    implementation "androidx.room:room-runtime:$room_version"
-    implementation "androidx.room:room-ktx:$room_version"
-    kapt "androidx.room:room-compiler:$room_version"
-
-    //json parsing
-    implementation "com.squareup.moshi:moshi-kotlin:$mosh_version"
-    kapt "com.squareup.moshi:moshi-kotlin-codegen:$mosh_version"
 
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'

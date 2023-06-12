@@ -45,8 +45,4 @@ fun MediateScreen(gonTaw:String, gonTawTranslation:String, showCount:String, cou
             }
         }
     }
-
-    fun findKoeNaWin(list: List<KoeNaWinUiData>,id:String): KoeNaWinUiData?{
-        return list.find { it.id== id}
-    }
 }

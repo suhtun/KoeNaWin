@@ -10,6 +10,7 @@ import com.su.koenawin.ui.feature.mediate.MediateScreen
 import androidx.navigation.compose.composable
 import com.su.koenawin.ui.feature.MittarScreen
 import com.su.koenawin.ui.feature.SettingScreen
+import com.su.koenawin.ui.feature.home.HomeRoute
 
 object Destinations {
     const val HOME_ROUTE = "home"
@@ -27,7 +28,7 @@ fun KoeNaWinAppNavHost(
         startDestination = HOME_ROUTE,
     ) {
         composable(HOME_ROUTE) {
-            HomeScreen(onNavigateToMediate = {navController.navigate(route = "mediate/${it.goneDaw}/${it?.goneDawDesc}/${it?.countName}/${it?.totalCount}")})
+            HomeRoute(onNavigateToMediate = {navController.navigate(route = "mediate/${it?.gontaw}/${it?.gontawTranslation}/${it?.showCount}/${it?.count}")})
         }
 
         composable(MEDIATE_ROUTE) {

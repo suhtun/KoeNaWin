@@ -1,3 +1,8 @@
 package com.su.core_model
 
-data class KoeNaWinUiData(val id:String, val dayString: String, val goneDaw:String, val goneDawDesc:String, val countName:String, val totalCount:Int)
+data class KoeNaWinUiData(val id:Int,
+                          val dayString: String,
+                          val gontaw:String,
+                          val gontawTranslation:String,
+                          val showCount:String,
+                          val count:Int)

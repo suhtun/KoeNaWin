@@ -3,7 +3,7 @@ package com.su.core_network.model
 import com.squareup.moshi.Json
 import com.su.core_model.KoeNaWinUiData
 
-data class NetworkKoeNaWin(@Json val id:String,
+data class NetworkKoeNaWin(@Json val id:Int,
                            @Json val day: String,
                            @Json val gonedaw:String,
                            @Json val gonedawTranslate:String,

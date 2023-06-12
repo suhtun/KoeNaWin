@@ -18,9 +18,6 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(private val repo: MainRepository) : ViewModel() {
-    private val _koeNaWinList = mutableStateOf(repo.getKoeNaWinList())
-    val koeNaWinList = _koeNaWinList
-
     private val _userFlow = MutableStateFlow(HomeScreenUiState(KoeNaWinUiState.Loading))
     val userFlow: StateFlow<HomeScreenUiState> = _userFlow.asStateFlow()
 
@@ -31,15 +28,14 @@ class HomeViewModel @Inject constructor(private val repo: MainRepository) : View
                     _userFlow.update {
                         when (result) {
                             is Result.Loading -> {
-                                Log.d("home","loading")
                                 HomeScreenUiState(KoeNaWinUiState.Loading)
                             }
+
                             is Result.Success -> {
-                                Log.d("home","safddsf ${result.data}")
                                 HomeScreenUiState(KoeNaWinUiState.Success(result.data))
                             }
-                            is Result.Error ->{
-                                Log.d("home","error ${result.exception}")
+
+                            is Result.Error -> {
                                 HomeScreenUiState(KoeNaWinUiState.Error)
                             }
                         }
@@ -48,9 +44,19 @@ class HomeViewModel @Inject constructor(private val repo: MainRepository) : View
         }
 
     }
-    fun findKoeNaWin(list: List<KoeNaWinUiData>?,id:String): KoeNaWinUiData?{
-        return list?.find { it.id== id}
+
+    fun findKoeNaWin(id: Int): KoeNaWinUiData? {
+        val state = userFlow.value.koeNaWinUiState
+        return if (state is KoeNaWinUiState.Success) state.koeNaWin.find { it.id ==id } else null
+//        return list.find { it.id == id }
+//        return null
     }
+
+//    fun followAuthorToggle(followed: Boolean) {
+//        viewModelScope.launch {
+//            userDataRepository.toggleFollowedAuthorId(authorId, followed)
+//        }
+//    }
 }
 
 sealed interface KoeNaWinUiState {

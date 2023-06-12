@@ -36,6 +36,7 @@ dependencies {
     //network
     implementation project(':core-model')
     implementation project(':core-network')
+    implementation project(':core-localstorage')
 
     // di_hilt
     implementation "com.google.dagger:hilt-android:$hilt_version"

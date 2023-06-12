@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">KoeNaWin</string>
     <string name="ic_profile">profile\n</string>
+    <string name="loading">Loading\n</string>
 </resources>
