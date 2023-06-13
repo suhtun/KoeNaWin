@@ -14,8 +14,11 @@ dependencyResolutionManagement {
 }
 rootProject.name = "KoeNaWin"
 include ':app'
-include ':core-domain'
+include ':core-data'
 include ':core-model'
 include ':core-network'
 include ':core-commom'
 include ':core-localstorage'
+include ':stockmarket:feature-companyinfo'
+include ':stockmarket:feature-companylisting'
+include ':koenawin'

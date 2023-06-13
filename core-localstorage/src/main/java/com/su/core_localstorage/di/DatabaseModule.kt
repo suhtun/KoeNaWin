@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.room.Room
 import com.su.core_localstorage.KoeNaWinDao
 import com.su.core_localstorage.KoeNaWinDatabase
+import com.su.core_localstorage.stockmarket.StockDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,6 +27,12 @@ class DatabaseModule {
     @Singleton
     fun provideKoeNaWinDao(database: KoeNaWinDatabase): KoeNaWinDao{
         return database.koeNaWinDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideStockDao(database: KoeNaWinDatabase): StockDao{
+        return database.StockDao()
     }
 
 }

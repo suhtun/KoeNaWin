@@ -12,10 +12,14 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/core-commom" />
-            <option value="$PROJECT_DIR$/core-domain" />
+            <option value="$PROJECT_DIR$/core-data" />
             <option value="$PROJECT_DIR$/core-localstorage" />
             <option value="$PROJECT_DIR$/core-model" />
             <option value="$PROJECT_DIR$/core-network" />
+            <option value="$PROJECT_DIR$/koenawin" />
+            <option value="$PROJECT_DIR$/stockmarket" />
+            <option value="$PROJECT_DIR$/stockmarket/feature-companyinfo" />
+            <option value="$PROJECT_DIR$/stockmarket/feature-companylisting" />
           </set>
         </option>
       </GradleProjectSettings>

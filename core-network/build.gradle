@@ -42,15 +42,14 @@ dependencies {
     //coroutine
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version"
-//    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:${kotlinx_serial_json_version}"
-
     //retrofit
-//    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
-//    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-//    implementation "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:${retrofit_serial_version}"
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
     implementation "com.squareup.moshi:moshi-kotlin:1.15.0"
+    implementation "com.squareup.okhttp3:okhttp:5.0.0-alpha.3"
+    implementation "com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.3"
+    //opencsv
+    implementation 'com.opencsv:opencsv:5.5.2'
 
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
