@@ -1,20 +1,22 @@
 package com.su.koenawin.ui.feature.mediate
 
 import android.util.Log
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class MediateViewModel : ViewModel() {
 
-    private val _totalCount = MutableStateFlow(MediateUiData(0))
-    val totalCount: StateFlow<MediateUiData> = _totalCount.asStateFlow()
+    var totalCount = mutableStateOf(0)
+//    val totalCount: StateFlow<MediateUiData> = _totalCount.asStateFlow()
 
     fun decreaseCount() {
-        Log.d("main","drcreas")
         viewModelScope.launch {
 //            val previous = _totalCount.value
 //            _totalCount.emit(MediateUiData(0))
@@ -25,19 +27,13 @@ class MediateViewModel : ViewModel() {
 //            _totalCount.update {
 //                it.copy(totalCount = 90)
 //            }
-
-            _totalCount.value = _totalCount.value.copy(totalCount = 90)
+            totalCount.value --
 
         }
     }
 
-    fun calculateTotalCount(count: Int) {
-        viewModelScope.launch {
-            _totalCount.value.apply {
-                this.totalCount = count * TIME
-            }
-        }
-
+    fun calculateTotalCount(count: Int){
+        totalCount.value = count * TIME
     }
 
     companion object {

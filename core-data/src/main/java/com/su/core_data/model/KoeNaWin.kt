@@ -2,9 +2,9 @@ package com.su.core_data.model
 
 import com.su.core_localstorage.entity.KoeNaWinEntity
 import com.su.core_model.KoeNaWinUiData
-import com.su.core_network.model.NetworkKoeNaWin
+import com.su.network.model.NetworkKoeNaWin
 
-fun NetworkKoeNaWin.asEntity() = KoeNaWinEntity(
+fun com.su.network.model.NetworkKoeNaWin.asEntity() = KoeNaWinEntity(
     id = id,
     dayString = day,
     gontaw = gonedaw,
@@ -22,7 +22,7 @@ fun KoeNaWinEntity.asUiModel() = KoeNaWinUiData(
     count = count
 )
 
-fun NetworkKoeNaWin.asUiModel() = KoeNaWinUiData(
+fun com.su.network.model.NetworkKoeNaWin.asUiModel() = KoeNaWinUiData(
     id = id,
     dayString = day ?: "",
     gontaw = nullStringWrapper(gonedaw),

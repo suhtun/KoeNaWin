@@ -10,7 +10,6 @@ import com.su.feature_companyinfo.navigation.CompanyInfoDestination
 import com.su.feature_companyinfo.navigation.companyInfoGraph
 import com.su.feature_companylisting.navigation.CompanyListingDestination
 import com.su.feature_companylisting.navigation.companyListingGraph
-@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun KnwAppNavHost(
     navController: NavHostController,

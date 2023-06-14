@@ -24,8 +24,7 @@ interface StockApi {
         @Query("apikey") apiKey: String = API_KEY
     ): NetworkCompanyInfo
 
-    companion object {
-        const val API_KEY = "G1USXWKX272RK4BP"
-        const val BASE_URL = "https://alphavantage.co"
-    }
 }
+
+const val API_KEY = "G1USXWKX272RK4BP"
+const val BASE_URL = "https://alphavantage.co"

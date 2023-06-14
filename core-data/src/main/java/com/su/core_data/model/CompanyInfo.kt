@@ -7,3 +7,8 @@ fun NetworkCompanyInfo.asUiModel()=CompanyInfoUiData(
     symbol = symbol ?: "", description = description ?: "",
     name = name ?: "", country = country ?: "", industry = industry ?: ""
 )
+
+fun CompanyInfoUiData.asNetwork()=NetworkCompanyInfo(
+    symbol = symbol ?: "", description = description ?: "",
+    name = name ?: "", country = country ?: "", industry = industry ?: ""
+)

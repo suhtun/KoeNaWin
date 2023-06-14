@@ -30,7 +30,6 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.su.feature_companyinfo.theme.DarkBlue
 
-@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun CompanyInfoRoute(
     modifier: Modifier = Modifier,
@@ -45,7 +44,6 @@ fun CompanyInfoRoute(
     }
 }
 
-@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun CompanyInfoScreen(
     state: CompanyInfoUiState

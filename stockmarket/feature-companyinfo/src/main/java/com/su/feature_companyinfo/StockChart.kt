@@ -16,7 +16,6 @@ import com.su.core_model.IntradayInfoUiData
 import kotlin.math.round
 import kotlin.math.roundToInt
 
-@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun StockChart(
     infos: List<IntradayInfoUiData> = emptyList(),

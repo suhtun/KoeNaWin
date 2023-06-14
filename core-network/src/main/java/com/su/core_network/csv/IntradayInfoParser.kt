@@ -5,6 +5,7 @@ import androidx.annotation.RequiresApi
 import com.opencsv.CSVReader
 import com.su.core_model.IntradayInfoUiData
 import com.su.core_network.model.NetworkIntradayInfo
+import com.su.core_network.model.NetworkIntradayInfoBeforeParser
 import com.su.core_network.model.convert
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -15,10 +16,9 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class IntradayInfoParser @Inject constructor(): CSVParser<IntradayInfoUiData> {
+class IntradayInfoParser @Inject constructor(): CSVParser<NetworkIntradayInfo> {
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    override suspend fun parse(stream: InputStream): List<IntradayInfoUiData> {
+    override suspend fun parse(stream: InputStream): List<NetworkIntradayInfo> {
         val csvReader = CSVReader(InputStreamReader(stream))
         return withContext(Dispatchers.IO) {
             csvReader
@@ -27,7 +27,7 @@ class IntradayInfoParser @Inject constructor(): CSVParser<IntradayInfoUiData> {
                 .mapNotNull { line ->
                     val timestamp = line.getOrNull(0) ?: return@mapNotNull null
                     val close = line.getOrNull(4) ?: return@mapNotNull null
-                    val dto = NetworkIntradayInfo(timestamp, close.toDouble())
+                    val dto = NetworkIntradayInfoBeforeParser(timestamp, close.toDouble())
                     dto.convert()
                 }
                 .filter {

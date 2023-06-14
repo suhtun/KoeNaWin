@@ -10,6 +10,8 @@ import com.su.core_model.IntradayInfoUiData
 import com.su.core_network.NetworkDataSource
 import com.su.core_network.model.NetworkCompanyInfo
 import com.su.core_network.model.NetworkCompanyListing
+import com.su.core_network.model.NetworkIntradayInfo
+import com.su.core_network.model.asUiModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -35,7 +37,7 @@ class StockMarketMianRepositoryImpl @Inject constructor(
     }.flowOn(Dispatchers.IO)
 
     override fun getIntradayInfo(symbol: String): Flow<List<IntradayInfoUiData>> = flow {
-        val response = dataSource.getIntradayInfo(symbol)
+        val response = dataSource.getIntradayInfo(symbol).map(NetworkIntradayInfo::asUiModel)
         emit(response)
     }.flowOn(Dispatchers.IO)
 

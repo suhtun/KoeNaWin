@@ -8,4 +8,6 @@ fun NetworkCompanyListing.asUiModel() = CompanyListUiData(name=name,symbol=symbo
 
 fun CompanyListUiData.asEntity() = CompanyListingEntity(name=name,symbol=symbol,exchange=exchange)
 
+fun CompanyListUiData.asNetwork() = NetworkCompanyListing(name=name,symbol=symbol,exchange=exchange)
+
 fun CompanyListingEntity.asUiModel() = CompanyListUiData(name=name,symbol=symbol,exchange=exchange)

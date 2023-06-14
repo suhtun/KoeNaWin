@@ -9,9 +9,16 @@ buildscript {
         coroutine_version = '1.7.1'
         okhttp_version = '4.9.3'
         retrofit_version = '2.9.0'
-        retrofit_serial_version = "0.8.0"
+        retrofit_serial_version = '0.8.0'
         kotlinx_serial_json_version = '1.3.3'
-        room_version = "2.5.1"
+        room_version = '2.5.1'
+        junit_version = '1.1.5'
+        testcore_version = '1.5.0'
+        roboletric_version = '4.9.2'
+        mockitokotlin_version = '2.2.0'
+        mockitoinline_version = '3.5.13'
+        turbine_version = '0.6.0'
+        desugar_versioon = '1.1.5'
     }
     dependencies {
         classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
@@ -24,4 +31,8 @@ plugins {
     id 'com.android.library' version '8.0.1' apply false
     id 'org.jetbrains.kotlin.android' version '1.7.20' apply false
     id 'org.jetbrains.kotlin.jvm' version '1.7.20' apply false
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
 }

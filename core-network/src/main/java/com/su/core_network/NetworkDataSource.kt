@@ -4,6 +4,7 @@ import com.su.core_model.CompanyInfoUiData
 import com.su.core_model.IntradayInfoUiData
 import com.su.core_network.model.NetworkCompanyInfo
 import com.su.core_network.model.NetworkCompanyListing
+import com.su.core_network.model.NetworkIntradayInfo
 import kotlinx.coroutines.flow.Flow
 
 interface NetworkDataSource {
@@ -11,7 +12,7 @@ interface NetworkDataSource {
 
     suspend fun getIntradayInfo(
         symbol: String
-    ): List<IntradayInfoUiData>
+    ): List<NetworkIntradayInfo>
 
     suspend fun getCompanyInfo(
         symbol: String

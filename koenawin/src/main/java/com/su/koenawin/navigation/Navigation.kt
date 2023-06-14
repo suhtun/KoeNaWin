@@ -21,7 +21,6 @@ object Destinations {
     const val MEDIATE_ROUTE = "mediate/{gontaw}/{gontawTranslation}/{viewCount}/{count}"
 }
 
-@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun KnwAppNavHost(
     navController: NavHostController,

@@ -1,6 +1,7 @@
 package com.su.core_network.model
 
 import com.squareup.moshi.Json
+import com.su.core_model.CompanyInfoUiData
 
 
 data class NetworkCompanyInfo(
@@ -11,4 +12,5 @@ data class NetworkCompanyInfo(
     @field:Json(name = "Industry") val industry: String?,
 )
 
+fun CompanyInfoUiData.asNetwork() = NetworkCompanyInfo(symbol=symbol,description=description,name=name,country=country,industry=industry)
 

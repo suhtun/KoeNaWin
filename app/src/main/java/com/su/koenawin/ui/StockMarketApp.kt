@@ -12,7 +12,6 @@ import androidx.navigation.compose.rememberNavController
 import com.su.koenawin.navigation.KnwAppNavHost
 import com.su.koenawin.ui.theme.KoeNaWinTheme
 
-@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun StockMarketApp() {
     KoeNaWinTheme {

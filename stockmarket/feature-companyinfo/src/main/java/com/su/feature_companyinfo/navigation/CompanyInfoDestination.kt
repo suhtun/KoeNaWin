@@ -16,7 +16,6 @@ object CompanyInfoDestination: KnwNavigationDestination {
     const val symbolArgs = "topicId"
 }
 
-@RequiresApi(Build.VERSION_CODES.O)
 fun NavGraphBuilder.companyInfoGraph(
     onBack: () -> Unit,
 ) {

@@ -25,4 +25,7 @@ interface StockDao {
         """
     )
     suspend fun searchCompanyListing(query: String): List<CompanyListingEntity>
+
+    @Query("SELECT * FROM CompanyListingEntity")
+    suspend fun getAllCompanyList(): List<CompanyListingEntity>
 }

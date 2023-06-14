@@ -29,14 +29,13 @@ import com.su.koenawin.ui.feature.home.HomeScreenUiState
 @Composable
 fun MediateRoute(gonTaw:String, gonTawTranslation:String, showCount:String, count:Int, onBackClick:()-> Unit,viewModel: MediateViewModel = hiltViewModel()){
     viewModel.calculateTotalCount(count)
-    val uiData: MediateUiData by viewModel.totalCount.collectAsState()
-    MediateScreen(gonTaw = gonTaw, gonTawTranslation = gonTawTranslation, showCount = showCount, currentCount = uiData.totalCount.toString() , onClick = {viewModel.decreaseCount()} )
+    MediateScreen(gonTaw = gonTaw, gonTawTranslation = gonTawTranslation, showCount = showCount, currentCount = viewModel.totalCount.value , onClick = {viewModel.decreaseCount()} )
     BackHandler {
         onBackClick()
     }
 }
 @Composable
-fun MediateScreen(gonTaw:String, gonTawTranslation:String, currentCount:String, showCount:String,onClick: () -> Unit) {
+fun MediateScreen(gonTaw:String, gonTawTranslation:String, currentCount:Int, showCount:String,onClick: () -> Unit) {
     Surface(modifier = Modifier.fillMaxSize()) {
         Box(modifier = Modifier.fillMaxSize()){
             Column(modifier = Modifier
@@ -55,7 +54,7 @@ fun MediateScreen(gonTaw:String, gonTawTranslation:String, currentCount:String, 
                 contentPadding = PaddingValues(0.dp),  //avoid the little icon
                 colors = ButtonDefaults.outlinedButtonColors(contentColor =  Color.Yellow)
             ) {
-                Text(text = currentCount,fontSize=28.sp, fontWeight = FontWeight.Bold)
+                Text(text = "${currentCount}",fontSize=28.sp, fontWeight = FontWeight.Bold)
             }
         }
     }
